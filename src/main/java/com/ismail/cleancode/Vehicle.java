@@ -2,5 +2,7 @@ package com.ismail.cleancode;
 
 public interface Vehicle {
 
-    public String print(boolean last);
+    public void accept(VehicleVisitor visitor);
+   // public String print(boolean last);
+
 }

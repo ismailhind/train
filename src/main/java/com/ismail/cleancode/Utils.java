@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Utils {
 
-    public static ArrayList<Character> stringToArrayChar(String str) {
-
-        List<Character> chars = new ArrayList<Character>();
+    public static ArrayList<Vehicle> stringToArrayVehicles(String str) {
+        VehicleFactory vehicleFactory = new VehicleFactory();
+        List<Vehicle> vehicles = new ArrayList<Vehicle>();
         for (int i = 0; i < str.length(); i++) {
-            chars.add(str.charAt(i));
+            vehicles.add(vehicleFactory.getVehicle(str.charAt(i)));
         }
-        return (ArrayList<Character>) chars;
+        return (ArrayList<Vehicle>) vehicles;
     }
 }
