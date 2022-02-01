@@ -1,4 +1,4 @@
-/*
+
 package com.ismail.cleancode;
 
 
@@ -27,6 +27,7 @@ public class TrainTest {
         assertEquals("<HHHH::|OOOO|::|hThT|::|OOOO|::HHHH>", train.print());
     }
 
+
     @Test
     public void modifyTrain() {
         Train train = new Train("HPRPH");
@@ -37,7 +38,6 @@ public class TrainTest {
         train.detachEnd();
         assertEquals("|OOOO|::|hThT|", train.print());
     }
-
 
     @Test
     public void cargoTrain() {
@@ -63,4 +63,4 @@ public class TrainTest {
         assertFalse(train.fill());
     }
 }
-*/
+

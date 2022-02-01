@@ -1,8 +1,10 @@
 package com.ismail.cleancode;
 
-public interface Vehicle {
+public abstract class Vehicle implements Fillable {
 
-    public void accept(VehicleVisitor visitor);
-   // public String print(boolean last);
+    public abstract void accept(VehicleVisitor visitor);
 
+    public boolean fillable() {
+        return false;
+    }
 }

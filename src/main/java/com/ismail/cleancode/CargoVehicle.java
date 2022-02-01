@@ -1,18 +1,12 @@
 package com.ismail.cleancode;
 
-public class CargoVehicle implements Vehicle {
+public class CargoVehicle extends Vehicle implements Fillable {
 
     public void accept(VehicleVisitor visitor) {
-        visitor.visit(this);
+        visitor.cargoWriter();
     }
 
-    @Override
-    public String toString() {
-        return "|____|";
+    public boolean fillable() {
+        return true;
     }
-
-    /*    public String print(boolean last) {
-        if(last) return "|____|";
-        return "|____|::";
-    }*/
 }

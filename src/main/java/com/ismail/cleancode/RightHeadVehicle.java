@@ -1,9 +1,9 @@
 package com.ismail.cleancode;
 
-public class RVehicle extends Vehicle {
+public class RightHeadVehicle extends Vehicle {
 
     public void accept(VehicleVisitor visitor) {
-        visitor.rVehicleWriter();
+        visitor.rightHeadWriter();
     }
 
 }

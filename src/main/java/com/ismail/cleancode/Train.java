@@ -1,60 +1,52 @@
 package com.ismail.cleancode;
 
-import jdk.nashorn.api.scripting.ScriptObjectMirror;
-
+import java.util.ArrayList;
 import java.util.List;
 
-public class Train implements Vehicle {
+public class Train  {
 
-    VehicleFactory vehicleFactory;
-  //  List<Character> inputChar;
-    public List<Vehicle> vehicles;
+    private List<Vehicle> vehicles = new ArrayList<Vehicle>();
 
-    public List<Vehicle> getVehicles() {
-        return vehicles;
-    }
 
     public Train(String input) {
-        vehicleFactory = new VehicleFactory();
-        vehicles = Utils.stringToArrayVehicles(input);
+        fillVehicles(input);
     }
 
-/*    public String print() {
-        String output = "";
-        boolean last = false;
-
-        for (int i = 0; i < inputChar.size(); i++) {
-            if (i == 0 && inputChar.get(i) == 'H') output += "<";
-            if (i == inputChar.size() - 1) last = true;
-            Vehicle vehicle = vehicleFactory.getVehicle(inputChar.get(i));
-            //   output += vehicle.print(last);
+    public String print() {
+        VehicleVisitor visitor = new VehicleVisitorDisplay();
+        for (int i = 0; i < vehicles.size(); i++) {
+            vehicles.get(i).accept(visitor);
+            if(i < vehicles.size()-1) visitor.getBuilder().append("::");
         }
-        return output;
+        return visitor.getBuilder().toString();
+    }
+
+    public void fillVehicles(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if(str.charAt(i) == 'H' && i == 0)  vehicles.add(VehicleFactory.getVehicle('h'));
+            else vehicles.add(VehicleFactory.getVehicle(str.charAt(i)));
+        }
     }
 
     public void detachEnd() {
-        inputChar.remove(inputChar.size() - 1);
+        vehicles.remove(vehicles.size() - 1);
     }
 
     public void detachHead() {
-        inputChar.remove(0);
+        vehicles.remove(0);
     }
 
     public boolean fill() {
-        for (int i = 0; i < inputChar.size(); i++) {
-            if (inputChar.get(i) == 'C') {
-                inputChar.set(i, 'c');
+        for (int i = 0; i < vehicles.size(); i++) {
+            if(vehicles.get(i) instanceof CargoVehicle){
+                replaceCargoWithModifiedCardo(i);
                 return true;
             }
         }
         return false;
-    }*/
+    }
 
-
-    public void accept(VehicleVisitor visitor) {
-        String output = "";
-        for (int i = 0; i < vehicles.size(); i++) {
-            vehicles.get(i).accept(visitor);
-        }
+    private void replaceCargoWithModifiedCardo(int i) {
+        vehicles.set(i, new ModifiedCargoVehicle());
     }
 }

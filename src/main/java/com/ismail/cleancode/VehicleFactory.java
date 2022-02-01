@@ -2,8 +2,9 @@ package com.ismail.cleancode;
 
 public class VehicleFactory {
 
-    public Vehicle getVehicle(char vehicleType){
-        if(vehicleType == 'H') return new HeadVehicle();
+    public static Vehicle getVehicle(char vehicleType){
+        if(vehicleType == 'h') return new LeftHeadVehicle();
+        if(vehicleType == 'H') return new RightHeadVehicle();
         if(vehicleType == 'C') return new CargoVehicle();
         if(vehicleType == 'c') return new ModifiedCargoVehicle();
         if(vehicleType == 'P') return new PassengerVehicle();

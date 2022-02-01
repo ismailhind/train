@@ -2,26 +2,34 @@ package com.ismail.cleancode;
 
 public class VehicleVisitorDisplay implements VehicleVisitor {
 
-    public void visit(CargoVehicle vehicle) {
-        System.out.print(vehicle.toString());
+    StringBuilder builder = new StringBuilder("");
+
+    public StringBuilder getBuilder() {
+        return builder;
     }
 
-    public void visit(ModifiedCargoVehicle vehicle) {
-        System.out.print(vehicle.toString());
+    public void cargoWriter() {
+        builder.append("|____|");
     }
 
-    public void visit(HeadVehicle vehicle) {
-        System.out.print(vehicle.toString());
+    public void rVehicleWriter() {
+        builder.append("|hThT|");
     }
 
-    public void visit(PassengerVehicle vehicle) {
-        System.out.print(vehicle.toString());
+    public void rightHeadWriter() {
+        builder.append("HHHH>");
     }
 
-    public void visit(RVehicle vehicle) {
-        System.out.print("|hThT|");
+    public void leftHeadWriter() {
+        builder.append("<HHHH");
     }
 
-    public void visit(Train train) {
+    public void passengerWriter() {
+        builder.append("|OOOO|");
     }
+
+    public void modifiedCargoWriter() {
+        builder.append("|^^^^|");
+    }
+
 }
