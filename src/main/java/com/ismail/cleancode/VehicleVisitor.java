@@ -2,7 +2,7 @@ package com.ismail.cleancode;
 
 public interface VehicleVisitor {
 
-    void cargoWriter();
+    void cargoWriter(boolean filable);
     void rVehicleWriter();
     void rightHeadWriter();
     void leftHeadWriter();
