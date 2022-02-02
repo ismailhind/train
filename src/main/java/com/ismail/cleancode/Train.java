@@ -38,8 +38,8 @@ public class Train  {
 
     public boolean fill() {
         for (int i = 0; i < vehicles.size(); i++) {
-            if(vehicles.get(i) instanceof CargoVehicle
-            && ((CargoVehicle) vehicles.get(i)).isFillable()){
+            if(vehicles.get(i) instanceof Fillable
+                    && ((Fillable)vehicles.get(i)).fill()){
                 replaceFillableCargoWith(i, (CargoVehicle)vehicles.get(i));
                 return true;
             }
@@ -48,7 +48,6 @@ public class Train  {
     }
 
     private void replaceFillableCargoWith(int i, CargoVehicle vehicle) {
-        vehicle.setFillable(false);
         vehicles.set(i, vehicle);
     }
 }

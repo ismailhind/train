@@ -10,7 +10,7 @@ public final class VehicleFactory {
         if(vehicleType == 'H') return new RightHeadVehicle();
         if(vehicleType == 'C') return new CargoVehicle();
         if(vehicleType == 'P') return new PassengerVehicle();
-        if(vehicleType == 'R') return new RVehicle();
+        if(vehicleType == 'R') return new RestaurantVehicle();
         return null;
     }
 }
