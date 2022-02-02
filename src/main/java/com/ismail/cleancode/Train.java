@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Train  {
 
-    private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+    private final List<Vehicle> vehicles = new ArrayList<Vehicle>();
 
 
     public Train(String input) {
@@ -38,15 +38,17 @@ public class Train  {
 
     public boolean fill() {
         for (int i = 0; i < vehicles.size(); i++) {
-            if(vehicles.get(i) instanceof CargoVehicle){
-                replaceCargoWithModifiedCardo(i);
+            if(vehicles.get(i) instanceof CargoVehicle
+            && ((CargoVehicle) vehicles.get(i)).isFillable()){
+                replaceFillableCargoWith(i, (CargoVehicle)vehicles.get(i));
                 return true;
             }
         }
         return false;
     }
 
-    private void replaceCargoWithModifiedCardo(int i) {
-        vehicles.set(i, new ModifiedCargoVehicle());
+    private void replaceFillableCargoWith(int i, CargoVehicle vehicle) {
+        vehicle.setFillable(false);
+        vehicles.set(i, vehicle);
     }
 }

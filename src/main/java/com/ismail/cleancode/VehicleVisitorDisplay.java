@@ -8,8 +8,9 @@ public class VehicleVisitorDisplay implements VehicleVisitor {
         return builder;
     }
 
-    public void cargoWriter() {
-        builder.append("|____|");
+    public void cargoWriter(boolean replaceable) {
+        if(replaceable) builder.append("|____|");
+        else builder.append("|^^^^|");
     }
 
     public void rVehicleWriter() {
