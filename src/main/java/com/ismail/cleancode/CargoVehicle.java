@@ -2,22 +2,19 @@ package com.ismail.cleancode;
 
 public class CargoVehicle extends Vehicle implements Fillable{
 
-    private boolean fillable = false;
-
-    public CargoVehicle() {
-        this.fillable = true;
-    }
+   private boolean isFillable = true;
 
     public void accept(VehicleVisitor visitor) {
-        visitor.cargoWriter(fillable);
+        if(isFillable) visitor.cargoWriter();
+        else visitor.filledCargoWriter();
     }
 
-    public boolean isFillable() {
-        return this.fillable;
+    @Override
+    public boolean fill() {
+        if(isFillable) {
+            isFillable = false;
+            return true;
+        }
+        return false;
     }
-
-    public void setFillable(boolean fillable) {
-        this.fillable = fillable;
-    }
-
 }
